@@ -1,0 +1,23 @@
+<nav class="navbar" *ngIf="auth.isLoggedIn()">
+  <div class="nav-brand">
+    <span class="logo"><i class="fa-solid fa-utensils"></i></span>
+    <span class="brand-name">FoodApp</span>
+  </div>
+  <div class="nav-links" *ngIf="!auth.isAdmin()">
+    <a routerLink="/home" routerLinkActive="active"><i class="fa-solid fa-house"></i> Home</a>
+    <a routerLink="/products" routerLinkActive="active"><i class="fa-solid fa-burger"></i> Food Items</a>
+    <a routerLink="/cart" routerLinkActive="active">
+      <i class="fa-solid fa-cart-shopping"></i> Cart <span class="cart-badge" *ngIf="cart.getItemCount() > 0">{{cart.getItemCount()}}</span>
+    </a>
+  </div>
+  <div class="nav-links" *ngIf="auth.isAdmin()">
+    <a routerLink="/admin" routerLinkActive="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+    <a routerLink="/admin/products" routerLinkActive="active"><i class="fa-solid fa-box"></i> Food Items</a>
+    <a routerLink="/admin/orders" routerLinkActive="active"><i class="fa-solid fa-clipboard-list"></i> Orders</a>
+    <a routerLink="/admin/users" routerLinkActive="active"><i class="fa-solid fa-users"></i> Users</a>
+  </div>
+  <div class="nav-right">
+    <span class="user-name"><i class="fa-solid fa-circle-user"></i> {{auth.getUser()?.name}}</span>
+    <button class="btn-logout" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </div>
+</nav>

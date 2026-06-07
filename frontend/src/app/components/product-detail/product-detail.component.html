@@ -1,0 +1,60 @@
+<div class="detail-page container" *ngIf="product">
+  <button class="btn-back" (click)="goBack()">← Back to Menu</button>
+
+  <div class="detail-layout">
+    <div class="detail-image" [class.veg-bg]="!product.imageUrl && product.category === 'VEG'" [class.nonveg-bg]="!product.imageUrl && product.category !== 'VEG'">
+      <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" class="detail-img" />
+      <div *ngIf="!product.imageUrl" class="image-placeholder" [class.veg-bg]="product.category === 'VEG'" [class.nonveg-bg]="product.category !== 'VEG'">
+        <span class="image-letter">{{product.name?.charAt(0)}}</span>
+      </div>
+      <span class="detail-badge" [class.veg]="product.category === 'VEG'" [class.nonveg]="product.category !== 'VEG'">
+        <i class="fa-solid" [class.fa-leaf]="product.category === 'VEG'" [class.fa-drumstick-bite]="product.category !== 'VEG'"></i>
+        {{product.category === 'VEG' ? 'Veg' : 'Non-Veg'}}
+      </span>
+    </div>
+
+    <div class="detail-info">
+      <h1>{{product.name}}</h1>
+      <p class="detail-desc">{{product.description}}</p>
+
+      <div class="rating-summary">
+        <span class="stars">{{getStars(avgRating)}}</span>
+        <span class="rating-num">{{avgRating | number:'1.1-1'}}</span>
+        <span class="review-count">({{reviews.length}} {{reviews.length === 1 ? 'review' : 'reviews'}})</span>
+      </div>
+
+      <div class="detail-price"><i class="fa-solid fa-indian-rupee-sign"></i>{{product.price | number:'1.2-2'}}</div>
+
+      <button *ngIf="!cartService.isInCart(product?.id)" class="btn-add-cart" [class.added]="addedToCart" (click)="addToCart()">
+        <i class="fa-solid" [class.fa-check]="addedToCart" [class.fa-cart-plus]="!addedToCart"></i>
+        {{addedToCart ? 'Added!' : 'Add to Cart'}}
+      </button>
+      <button *ngIf="cartService.isInCart(product?.id) && !addedToCart" class="btn-go-cart" (click)="goToCart()">
+        <i class="fa-solid fa-cart-shopping"></i> Go to Cart
+        <span class="cart-qty">{{cartService.getQuantityInCart(product?.id)}} in cart</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <h2>Customer Reviews ({{reviews.length}})</h2>
+    <div class="reviews-list" *ngIf="reviews.length > 0">
+      <div class="review-card" *ngFor="let r of reviews">
+        <div class="review-top">
+          <div class="reviewer-info">
+            <span class="reviewer-avatar">{{r.user?.name?.charAt(0) || '?'}}</span>
+            <strong>{{r.user?.name || 'Anonymous'}}</strong>
+          </div>
+          <div class="review-rating">
+            <span class="stars">{{getStars(r.rating)}}</span>
+          </div>
+        </div>
+        <p class="review-comment">{{r.comment}}</p>
+        <small class="review-date">{{r.createdAt | date:'mediumDate'}}</small>
+      </div>
+    </div>
+    <div class="no-reviews" *ngIf="reviews.length === 0">
+      <p><i class="fa-solid fa-utensils"></i> No reviews yet. Be the first to review this item!</p>
+    </div>
+  </div>
+</div>

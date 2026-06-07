@@ -1,0 +1,9 @@
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.page-title { font-size: 28px; margin-bottom: 25px; color: #333; }
+.users-table { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+table { width: 100%; border-collapse: collapse; }
+thead { background: #f8f9fa; }
+th { padding: 14px 18px; text-align: left; font-size: 13px; font-weight: 600; color: #555; }
+td { padding: 14px 18px; border-top: 1px solid #eee; font-size: 14px; }
+.timestamp { font-size: 13px; color: #888; }
+.no-data { text-align: center; padding: 30px; color: #aaa; }

@@ -1,0 +1,42 @@
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.page-title { font-size: 28px; margin-bottom: 20px; color: #333; }
+.filters { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; background: white; padding: 18px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.filter-group { display: flex; align-items: center; gap: 8px; }
+.filter-label { font-weight: 600; font-size: 14px; color: #555; margin-right: 5px; }
+.filter-group button { padding: 8px 16px; border: 2px solid #eee; background: white; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.3s; color: #666; }
+.filter-group button.active { border-color: #ff6b35; color: #ff6b35; background: #fff5f0; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.product-card { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.product-image { position: relative; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #f5f5f5; }
+.product-image.veg-bg { background: linear-gradient(135deg, #a8e063, #56ab2f); }
+.product-image.nonveg-bg { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+.product-img { width: 100%; height: 100%; object-fit: cover; }
+.image-placeholder { font-size: 64px; font-weight: 700; color: rgba(255,255,255,0.7); }
+.category-badge { position: absolute; top: 10px; left: 10px; padding: 4px 10px; background: rgba(255,255,255,0.9); border-radius: 12px; font-size: 11px; font-weight: 600; }
+.product-info { padding: 16px; }
+.product-info h3 { font-size: 17px; margin-bottom: 6px; color: #333; }
+.description { font-size: 13px; color: #888; margin-bottom: 14px; line-height: 1.4; }
+.product-bottom { display: flex; justify-content: space-between; align-items: center; }
+.price { font-size: 20px; font-weight: 700; color: #ff6b35; }
+.btn-add { padding: 8px 18px; background: #ff6b35; color: white; border: none; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+.btn-add:hover { background: #e55a2b; }
+.btn-add.added { background: #28a745; animation: popIn 0.3s ease; }
+.btn-go-cart { padding: 8px 18px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 6px; animation: slideIn 0.3s ease; }
+.btn-go-cart:hover { background: linear-gradient(135deg, #218838, #1baa80); transform: scale(1.05); }
+.cart-qty { background: rgba(255,255,255,0.3); padding: 1px 7px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+@keyframes popIn { 0% { transform: scale(0.8); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+@keyframes slideIn { 0% { opacity: 0; transform: translateX(-10px); } 100% { opacity: 1; transform: translateX(0); } }
+.product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.product-rating .stars { color: #f4a623; font-size: 14px; letter-spacing: 1px; }
+.rating-text { font-size: 12px; color: #999; font-weight: 500; }
+.btn-reviews { width: 100%; padding: 10px; background: #f8f8f8; border: none; border-top: 1px solid #eee; color: #ff6b35; font-size: 13px; font-weight: 600; cursor: pointer; }
+.reviews-section { padding: 14px 16px; background: #fafafa; border-top: 1px solid #eee; }
+.review-item { padding: 10px 0; border-bottom: 1px solid #eee; }
+.review-item:last-child { border-bottom: none; }
+.review-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.review-header strong { font-size: 13px; }
+.review-stars { font-size: 12px; }
+.review-item p { font-size: 13px; color: #555; margin: 0; }
+.review-item small { font-size: 11px; color: #aaa; }
+.no-reviews, .no-products { text-align: center; color: #aaa; font-size: 13px; padding: 10px; }

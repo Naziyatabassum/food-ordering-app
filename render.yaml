@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ordering-app
+    env: docker
+    branch: main
+    dockerfilePath: Dockerfile
+    plan: starter
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://ordering-db:3306/fooddb?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - key: SPRING_DATASOURCE_USERNAME
+        value: root
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: root
+
+databases:
+  - name: ordering-db
+    engine: mysql
+    version: '8'
+    plan: starter
+    databaseName: fooddb

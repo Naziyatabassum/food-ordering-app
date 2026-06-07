@@ -1,0 +1,21 @@
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.page-title { font-size: 28px; margin-bottom: 25px; color: #333; }
+.success-message { text-align: center; padding: 60px; }
+.success-icon { font-size: 64px; display: block; margin-bottom: 15px; }
+.success-message h2 { font-size: 24px; color: #28a745; margin-bottom: 8px; }
+.review-content { max-width: 700px; margin: 0 auto; }
+.review-card { background: white; border-radius: 14px; padding: 24px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.review-product { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.product-thumb { width: 50px; height: 50px; background: linear-gradient(135deg, #ffecd2, #fcb69f); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: white; }
+.review-product h3 { font-size: 16px; margin: 0 0 2px 0; }
+.product-qty { font-size: 12px; color: #888; }
+.rating-section { margin-bottom: 14px; }
+.rating-section label, .comment-section label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+.stars { display: flex; gap: 6px; }
+.star { font-size: 28px; color: #ddd; cursor: pointer; transition: color 0.2s; }
+.star.active { color: #ffc107; }
+.star:hover { color: #ffb300; }
+.comment-section textarea { width: 100%; resize: none; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none; box-sizing: border-box; font-family: inherit; }
+.comment-section textarea:focus { border-color: #ff6b35; }
+.btn-submit { width: 100%; padding: 14px; background: #ff6b35; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+.btn-submit:hover { background: #e55a2b; }

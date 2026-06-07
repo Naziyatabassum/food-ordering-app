@@ -1,0 +1,47 @@
+<div class="admin-products container">
+  <div class="page-header">
+    <h1 class="page-title"><i class="fa-solid fa-box-open"></i> Manage Food Items</h1>
+    <button class="btn-primary" (click)="showForm = !showForm">{{showForm ? 'Cancel' : '+ Add Product'}}</button>
+  </div>
+  <div class="success-msg" *ngIf="success">{{success}}</div>
+  <div class="add-form" *ngIf="showForm">
+    <h2>Add New Product</h2>
+    <div class="form-grid">
+      <div class="form-group"><label><i class="fa-solid fa-tag"></i> Product Name</label><input type="text" [(ngModel)]="newProduct.name" placeholder="Enter product name"></div>
+      <div class="form-group"><label><i class="fa-solid fa-indian-rupee-sign"></i> Price</label><input type="number" [(ngModel)]="newProduct.price" placeholder="Enter price"></div>
+      <div class="form-group"><label><i class="fa-solid fa-list"></i> Category</label><select [(ngModel)]="newProduct.category"><option value="VEG">Veg</option><option value="NON_VEG">Non-Veg</option></select></div>
+      <div class="form-group"><label><i class="fa-solid fa-image"></i> Image URL</label><input type="text" [(ngModel)]="newProduct.imageUrl" placeholder="Optional image URL"></div>
+      <div class="form-group full-width"><label><i class="fa-solid fa-align-left"></i> Description</label><textarea [(ngModel)]="newProduct.description" placeholder="Describe the product" rows="2"></textarea></div>
+    </div>
+    <button class="btn-primary" (click)="addProduct()"><i class="fa-solid fa-floppy-disk"></i> Save Product</button>
+  </div>
+  <!-- Edit Form -->
+  <div class="add-form" *ngIf="editProduct">
+    <h2><i class="fa-solid fa-pen-to-square"></i> Edit Product</h2>
+    <div class="form-grid">
+      <div class="form-group"><label><i class="fa-solid fa-tag"></i> Product Name</label><input type="text" [(ngModel)]="editProduct.name"></div>
+      <div class="form-group"><label><i class="fa-solid fa-indian-rupee-sign"></i> Price</label><input type="number" [(ngModel)]="editProduct.price"></div>
+      <div class="form-group"><label><i class="fa-solid fa-list"></i> Category</label><select [(ngModel)]="editProduct.category"><option value="VEG">Veg</option><option value="NON_VEG">Non-Veg</option></select></div>
+      <div class="form-group"><label><i class="fa-solid fa-image"></i> Image URL</label><input type="text" [(ngModel)]="editProduct.imageUrl"></div>
+      <div class="form-group full-width"><label><i class="fa-solid fa-align-left"></i> Description</label><textarea [(ngModel)]="editProduct.description" rows="2"></textarea></div>
+    </div>
+    <div class="edit-actions">
+      <button class="btn-primary" (click)="saveEdit()"><i class="fa-solid fa-floppy-disk"></i> Update Product</button>
+      <button class="btn-cancel" (click)="cancelEdit()"><i class="fa-solid fa-xmark"></i> Cancel</button>
+    </div>
+  </div>
+  <div class="products-table">
+    <table>
+      <thead><tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{p.id}}</td><td>{{p.name}}</td>
+          <td><span class="badge" [class.veg]="p.category === 'VEG'" [class.nonveg]="p.category === 'NON_VEG'"><i class="fa-solid" [class.fa-leaf]="p.category === 'VEG'" [class.fa-drumstick-bite]="p.category !== 'VEG'"></i> {{p.category === 'VEG' ? 'Veg' : 'Non-Veg'}}</span></td>
+          <td><i class="fa-solid fa-indian-rupee-sign"></i>{{p.price | number:'1.2-2'}}</td>
+          <td><button class="btn-edit" (click)="startEdit(p)"><i class="fa-solid fa-pen"></i> Edit</button> <button class="btn-del" (click)="deleteProduct(p.id)"><i class="fa-solid fa-trash"></i> Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="no-data" *ngIf="products.length === 0">No food items yet. Add your first item!</p>
+  </div>
+</div>

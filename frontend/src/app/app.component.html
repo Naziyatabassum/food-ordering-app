@@ -1,0 +1,4 @@
+<app-navbar *ngIf="auth.getUser()"></app-navbar>
+<div class="main-content" [class.no-nav]="!auth.getUser()">
+  <router-outlet></router-outlet>
+</div>

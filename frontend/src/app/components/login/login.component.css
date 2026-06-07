@@ -1,0 +1,18 @@
+.login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); padding-top: 0; }
+.login-card { background: white; border-radius: 16px; padding: 40px; width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+.login-header { text-align: center; margin-bottom: 30px; }
+.login-logo { font-size: 48px; }
+.login-header h1 { font-size: 28px; color: #333; margin-top: 10px; }
+.login-header p { color: #888; font-size: 14px; margin-top: 5px; }
+.toggle-tabs { display: flex; gap: 10px; margin-bottom: 25px; }
+.toggle-tabs button { flex: 1; padding: 10px; border: 2px solid #eee; background: #f9f9f9; border-radius: 8px; font-weight: 600; color: #888; cursor: pointer; transition: all 0.3s; font-size: 14px; }
+.toggle-tabs button.active { border-color: #ff6b35; background: #fff5f0; color: #ff6b35; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 13px; color: #555; }
+.form-group input { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none; box-sizing: border-box; }
+.form-group input:focus { border-color: #ff6b35; }
+.error { color: #dc3545; font-size: 13px; margin-bottom: 12px; text-align: center; }
+.btn-login { width: 100%; padding: 12px; background: #ff6b35; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+.btn-login:hover { background: #e55a2b; }
+.register-link { text-align: center; margin-top: 20px; font-size: 14px; color: #888; min-height: 24px; }
+.register-link a { color: #ff6b35; font-weight: 600; text-decoration: none; }

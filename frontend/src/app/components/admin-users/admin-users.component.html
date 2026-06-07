@@ -1,0 +1,15 @@
+<div class="admin-users container">
+  <h1 class="page-title"><i class="fa-solid fa-users"></i> Registered Users</h1>
+  <div class="users-table">
+    <table>
+      <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Address</th><th>Joined</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>{{u.id}}</td><td><strong>{{u.name}}</strong></td><td>{{u.email}}</td><td>{{u.phone}}</td><td>{{u.address}}</td>
+          <td class="timestamp">{{u.createdAt | date:'mediumDate'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="no-data" *ngIf="users.length === 0">No registered users yet</p>
+  </div>
+</div>

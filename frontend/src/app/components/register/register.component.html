@@ -1,0 +1,41 @@
+<div class="register-page">
+  <div class="register-card">
+    <div class="register-header">
+      <span class="register-logo"><i class="fa-solid fa-utensils"></i></span>
+      <h1>Create Account</h1>
+      <p>Join FoodApp today</p>
+    </div>
+    <form (ngSubmit)="register()">
+      <div class="form-group">
+        <label><i class="fa-solid fa-user"></i> Full Name</label>
+        <input type="text" [(ngModel)]="user.name" name="name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-envelope"></i> Email</label>
+        <input type="email" [(ngModel)]="user.email" name="email" placeholder="Enter your email" required (blur)="validateEmail()">
+        <small class="field-error" *ngIf="emailError">{{emailError}}</small>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-lock"></i> Password</label>
+        <input type="password" [(ngModel)]="user.password" name="password" placeholder="Create a password (min 6, 1 uppercase, 1 number)" required (blur)="validatePassword()">
+        <small class="field-error" *ngIf="passwordError">{{passwordError}}</small>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-phone"></i> Phone</label>
+        <input type="text" [(ngModel)]="user.phone" name="phone" placeholder="Enter 10-digit phone number" required maxlength="10" (blur)="validatePhone()">
+        <small class="field-error" *ngIf="phoneError">{{phoneError}}</small>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-location-dot"></i> Address</label>
+        <textarea [(ngModel)]="user.address" name="address" placeholder="Enter your full address" rows="2" required (blur)="validateAddress()"></textarea>
+        <small class="field-error" *ngIf="addressError">{{addressError}}</small>
+      </div>
+      <div class="error" *ngIf="error">{{error}}</div>
+      <div class="success" *ngIf="success">{{success}}</div>
+      <button type="submit" class="btn-register"><i class="fa-solid fa-user-plus"></i> Register</button>
+    </form>
+    <div class="login-link">
+      <p>Already have an account? <a routerLink="/login">Login here</a></p>
+    </div>
+  </div>
+</div>

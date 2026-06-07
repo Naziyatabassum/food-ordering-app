@@ -1,0 +1,11 @@
+**/target
+**/node_modules
+**/dist
+.git
+.gitignore
+Dockerfile
+backend/Dockerfile
+frontend/Dockerfile
+frontend/nginx.conf
+docker-compose.yml
+frontend/FRONTEND_DOCUMENTATION.md

@@ -1,0 +1,61 @@
+<div class="tracking-page" *ngIf="order">
+  <div class="tracking-header">
+    <h1><i class="fa-solid fa-truck-fast"></i> Order #{{order.id}}</h1>
+    <span class="status-badge" [class.delivering]="!timerDone" [class.delivered]="timerDone">
+      {{timerDone ? 'Delivered' : 'On the way'}}
+    </span>
+  </div>
+
+  <div class="tracking-body">
+    <!-- Leaflet Map -->
+    <div class="map-box">
+      <div id="tracking-map" class="map-container"></div>
+      <div class="map-info">
+        <span *ngIf="distanceKm"><i class="fa-solid fa-route"></i> {{distanceKm}} km</span>
+        <span><i class="fa-solid fa-store"></i> RR Restaurant, Coimbatore</span>
+        <span *ngIf="order.deliveryAddress"><i class="fa-solid fa-house"></i> {{order.deliveryAddress}}</span>
+      </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info-box">
+      <!-- Timer -->
+      <div class="timer-block" [class.done]="timerDone">
+        <div class="timer-display">
+          <span class="time">{{minutes | number:'2.0-0'}}:{{seconds | number:'2.0-0'}}</span>
+          <span class="timer-sub">{{timerDone ? 'Delivered!' : 'Estimated time'}}</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="deliveryProgress"></div>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="steps">
+        <div class="step done"><i class="fa-solid fa-check-circle"></i> Order Placed</div>
+        <div class="step" [class.done]="deliveryProgress > 30"><i class="fa-solid" [class.fa-check-circle]="deliveryProgress > 30" [class.fa-circle]="deliveryProgress <= 30"></i> Preparing</div>
+        <div class="step" [class.done]="deliveryProgress > 70"><i class="fa-solid" [class.fa-check-circle]="deliveryProgress > 70" [class.fa-circle]="deliveryProgress <= 70"></i> Out for Delivery</div>
+        <div class="step" [class.done]="timerDone"><i class="fa-solid" [class.fa-check-circle]="timerDone" [class.fa-circle]="!timerDone"></i> Delivered</div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="summary">
+        <h3>Order Summary</h3>
+        <div class="item" *ngFor="let item of order.items">
+          <span>{{item.product?.name}} x{{item.quantity}}</span>
+          <span><i class="fa-solid fa-indian-rupee-sign"></i>{{item.price | number:'1.2-2'}}</span>
+        </div>
+        <div class="total">
+          <strong>Total</strong>
+          <strong><i class="fa-solid fa-indian-rupee-sign"></i>{{order.totalAmount | number:'1.2-2'}}</strong>
+        </div>
+      </div>
+
+      <!-- Review -->
+      <div class="review-box" *ngIf="timerDone">
+        <p><i class="fa-solid fa-star"></i> Your order has been delivered!</p>
+        <button class="btn-review" (click)="goToReview()"><i class="fa-solid fa-pen-to-square"></i> Leave a Review</button>
+      </div>
+    </div>
+  </div>
+</div>

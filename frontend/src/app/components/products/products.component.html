@@ -1,0 +1,48 @@
+<div class="products-page container">
+  <h1 class="page-title"><i class="fa-solid fa-burger"></i> Our Menu</h1>
+  <div class="filters">
+    <div class="filter-group">
+      <span class="filter-label">Filter:</span>
+      <button [class.active]="category === ''" (click)="filterCategory('')">All</button>
+      <button [class.active]="category === 'VEG'" (click)="filterCategory('VEG')"><i class="fa-solid fa-leaf"></i> Veg</button>
+      <button [class.active]="category === 'NON_VEG'" (click)="filterCategory('NON_VEG')"><i class="fa-solid fa-drumstick-bite"></i> Non-Veg</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Sort by Price:</span>
+      <button [class.active]="sortOrder === 'asc'" (click)="changeSort('asc')">Low <i class="fa-solid fa-arrow-right"></i> High</button>
+      <button [class.active]="sortOrder === 'desc'" (click)="changeSort('desc')">High <i class="fa-solid fa-arrow-right"></i> Low</button>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card" *ngFor="let product of products" (click)="viewProduct(product.id)" style="cursor:pointer;">
+      <div class="product-image" [class.veg-bg]="!product.imageUrl && product.category === 'VEG'" [class.nonveg-bg]="!product.imageUrl && product.category !== 'VEG'">
+        <span class="category-badge" [class.veg]="product.category === 'VEG'" [class.nonveg]="product.category === 'NON_VEG'">
+          <i class="fa-solid" [class.fa-leaf]="product.category === 'VEG'" [class.fa-drumstick-bite]="product.category !== 'VEG'"></i>
+          {{product.category === 'VEG' ? 'Veg' : 'Non-Veg'}}
+        </span>
+        <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" class="product-img" />
+        <div *ngIf="!product.imageUrl" class="image-placeholder">{{product.name?.charAt(0)}}</div>
+      </div>
+      <div class="product-info">
+        <h3>{{product.name}}</h3>
+        <p class="description">{{product.description}}</p>
+        <div class="product-rating" *ngIf="productRatings[product.id]">
+          <span class="stars">{{getStars(productRatings[product.id].avg)}}</span>
+          <span class="rating-text">{{productRatings[product.id].avg | number:'1.1-1'}} ({{productRatings[product.id].count}})</span>
+        </div>
+        <div class="product-bottom">
+          <span class="price"><i class="fa-solid fa-indian-rupee-sign"></i>{{product.price | number:'1.2-2'}}</span>
+          <button *ngIf="!cartService.isInCart(product.id)" class="btn-add" [class.added]="addedId === product.id" (click)="addToCart(product, $event)">
+            <i class="fa-solid" [class.fa-check]="addedId === product.id" [class.fa-cart-plus]="addedId !== product.id"></i>
+            {{addedId === product.id ? 'Added!' : 'Add to Cart'}}
+          </button>
+          <button *ngIf="cartService.isInCart(product.id) && addedId !== product.id" class="btn-go-cart" (click)="goToCart($event)">
+            <i class="fa-solid fa-cart-shopping"></i> Go to Cart
+            <span class="cart-qty">{{cartService.getQuantityInCart(product.id)}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="no-products" *ngIf="products.length === 0">No food items found</p>
+</div>

@@ -1,0 +1,71 @@
+<div class="cart-page container">
+  <h1 class="page-title"><i class="fa-solid fa-cart-shopping"></i> Your Cart</h1>
+  <div class="empty-cart" *ngIf="items.length === 0">
+    <span class="empty-icon"><i class="fa-solid fa-cart-shopping fa-3x"></i></span>
+    <h2>Your cart is empty</h2>
+    <p>Add some delicious items from our menu</p>
+    <button class="btn-primary" routerLink="/products"><i class="fa-solid fa-utensils"></i> Browse Menu</button>
+  </div>
+  <div class="cart-content" *ngIf="items.length > 0">
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of items">
+        <div class="item-image">{{item.product.name?.charAt(0)}}</div>
+        <div class="item-details">
+          <h3>{{item.product.name}}</h3>
+          <span class="item-category"><i class="fa-solid" [class.fa-leaf]="item.product.category === 'VEG'" [class.fa-drumstick-bite]="item.product.category !== 'VEG'"></i> {{item.product.category === 'VEG' ? 'Veg' : 'Non-Veg'}}</span>
+          <span class="item-price"><i class="fa-solid fa-indian-rupee-sign"></i>{{item.product.price | number:'1.2-2'}}</span>
+        </div>
+        <div class="item-quantity">
+          <button class="qty-btn" (click)="decrease(item.product.id)">-</button>
+          <span class="qty-value">{{item.quantity}}</span>
+          <button class="qty-btn" (click)="increase(item.product.id)">+</button>
+        </div>
+        <div class="item-total"><i class="fa-solid fa-indian-rupee-sign"></i>{{(item.product.price * item.quantity) | number:'1.2-2'}}</div>
+        <button class="btn-remove" (click)="remove(item.product.id)"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <h2><i class="fa-solid fa-receipt"></i> Order Summary</h2>
+      <div class="summary-row" *ngFor="let item of items">
+        <span>{{item.product.name}} x{{item.quantity}}</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i>{{(item.product.price * item.quantity) | number:'1.2-2'}}</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-row total-row">
+        <strong>Total Amount</strong>
+        <strong class="total-amount"><i class="fa-solid fa-indian-rupee-sign"></i>{{total | number:'1.2-2'}}</strong>
+      </div>
+
+      <!-- Delivery Address Section -->
+      <div class="address-section">
+        <h3><i class="fa-solid fa-location-dot"></i> Delivery Address</h3>
+        <div class="address-options">
+          <label class="address-option" [class.selected]="addressOption === 'default'">
+            <input type="radio" name="addressOption" value="default" [(ngModel)]="addressOption">
+            <div class="option-content">
+              <span class="option-label"><i class="fa-solid fa-house"></i> Default Address</span>
+              <span class="option-address">{{defaultAddress || 'No address saved'}}</span>
+            </div>
+          </label>
+          <label class="address-option" [class.selected]="addressOption === 'custom'">
+            <input type="radio" name="addressOption" value="custom" [(ngModel)]="addressOption">
+            <div class="option-content">
+              <span class="option-label"><i class="fa-solid fa-pen"></i> New Address</span>
+            </div>
+          </label>
+          <textarea *ngIf="addressOption === 'custom'" class="custom-address-input" [(ngModel)]="customAddress" placeholder="Enter delivery address..." rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="address-error" *ngIf="addressError">
+        <i class="fa-solid fa-circle-exclamation"></i> {{addressError}}
+      </div>
+      <div id="distance-map" class="distance-map" *ngIf="addressError && addressError.includes('km')"></div>
+
+      <button class="btn-place-order" (click)="placeOrder()" [disabled]="validating">
+        <i class="fa-solid" [class.fa-spinner]="validating" [class.fa-spin]="validating" [class.fa-check-circle]="!validating"></i>
+        {{validating ? 'Verifying Address...' : 'Place Order'}}
+      </button>
+    </div>
+  </div>
+</div>

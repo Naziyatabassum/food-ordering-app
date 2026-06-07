@@ -1,0 +1,18 @@
+<div class="admin-orders container">
+  <h1 class="page-title"><i class="fa-solid fa-clipboard-list"></i> All Orders</h1>
+  <div class="orders-table">
+    <table>
+      <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Order Time</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let o of orders">
+          <td>#{{o.id}}</td><td>{{o.user?.name}}</td>
+          <td><div class="order-items" *ngFor="let item of o.items">{{item.product?.name}} x{{item.quantity}}</div></td>
+          <td class="amount"><i class="fa-solid fa-indian-rupee-sign"></i>{{o.totalAmount | number:'1.2-2'}}</td>
+          <td><span class="status-badge" [class]="o.status?.toLowerCase()">{{o.status}}</span></td>
+          <td class="timestamp">{{o.orderTime | date:'medium'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="no-data" *ngIf="orders.length === 0">No orders yet</p>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.page-title { font-size: 28px; color: #333; }
+.btn-primary { padding: 10px 20px; background: #ff6b35; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.success-msg { background: #d4edda; color: #155724; padding: 12px 18px; border-radius: 8px; margin-bottom: 16px; font-weight: 500; }
+.add-form { background: white; border-radius: 14px; padding: 28px; margin-bottom: 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.add-form h2 { font-size: 18px; margin-bottom: 18px; color: #333; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 18px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group.full-width { grid-column: 1 / -1; }
+.form-group label { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none; box-sizing: border-box; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #ff6b35; }
+.form-group textarea { resize: none; }
+.products-table { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+table { width: 100%; border-collapse: collapse; }
+thead { background: #f8f9fa; }
+th { padding: 14px 18px; text-align: left; font-size: 13px; font-weight: 600; color: #555; }
+td { padding: 14px 18px; border-top: 1px solid #eee; font-size: 14px; }
+.badge { padding: 3px 10px; border-radius: 10px; font-size: 12px; }
+.badge.veg { background: #e8f5e9; }
+.badge.nonveg { background: #ffebee; }
+.btn-edit { background: none; border: none; color: #ff6b35; cursor: pointer; font-size: 14px; padding: 5px 10px; }
+.btn-edit:hover { background: #fff5f0; border-radius: 6px; }
+.btn-del { background: none; border: none; color: #dc3545; cursor: pointer; font-size: 14px; padding: 5px 10px; }
+.btn-del:hover { background: #fff5f5; border-radius: 6px; }
+.edit-actions { display: flex; gap: 10px; margin-top: 15px; }
+.btn-cancel { padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-cancel:hover { background: #5a6268; }
+.no-data { text-align: center; padding: 30px; color: #aaa; }

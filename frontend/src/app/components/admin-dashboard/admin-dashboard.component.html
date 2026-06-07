@@ -1,0 +1,17 @@
+<div class="admin-page container">
+  <h1 class="page-title"><i class="fa-solid fa-gauge-high"></i> Admin Dashboard</h1>
+  <div class="stats-grid">
+    <div class="stat-card" routerLink="/admin/users"><span class="stat-icon"><i class="fa-solid fa-users"></i></span><div class="stat-value">{{totalUsers}}</div><div class="stat-label">Total Users</div></div>
+    <div class="stat-card" routerLink="/admin/products"><span class="stat-icon"><i class="fa-solid fa-box-open"></i></span><div class="stat-value">{{totalProducts}}</div><div class="stat-label">Food Items</div></div>
+    <div class="stat-card" routerLink="/admin/orders"><span class="stat-icon"><i class="fa-solid fa-clipboard-list"></i></span><div class="stat-value">{{totalOrders}}</div><div class="stat-label">Total Orders</div></div>
+    <div class="stat-card revenue"><span class="stat-icon"><i class="fa-solid fa-sack-dollar"></i></span><div class="stat-value"><i class="fa-solid fa-indian-rupee-sign"></i>{{totalRevenue | number:'1.2-2'}}</div><div class="stat-label">Total Revenue</div></div>
+  </div>
+  <div class="quick-links">
+    <h2>Quick Actions</h2>
+    <div class="links-grid">
+      <a routerLink="/admin/products" class="quick-link"><i class="fa-solid fa-plus"></i> Add New Product</a>
+      <a routerLink="/admin/orders" class="quick-link"><i class="fa-solid fa-clipboard-list"></i> View All Orders</a>
+      <a routerLink="/admin/users" class="quick-link"><i class="fa-solid fa-users-gear"></i> Manage Users</a>
+    </div>
+  </div>
+</div>

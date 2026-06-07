@@ -1,0 +1,27 @@
+<div class="review-page container">
+  <h1 class="page-title"><i class="fa-solid fa-star"></i> Review Your Order</h1>
+  <div class="success-message" *ngIf="submitted">
+    <span class="success-icon"><i class="fa-solid fa-circle-check fa-3x"></i></span><h2>Thank you for your review!</h2><p>Redirecting to home page...</p>
+  </div>
+  <div class="review-content" *ngIf="order && !submitted">
+    <div class="review-card" *ngFor="let item of order.items">
+      <div class="review-product">
+        <div class="product-thumb">{{item.product?.name?.charAt(0)}}</div>
+        <div><h3>{{item.product?.name}}</h3><span class="product-qty">Qty: {{item.quantity}}</span></div>
+      </div>
+      <div class="rating-section">
+        <label>Rating</label>
+        <div class="stars">
+          <span *ngFor="let s of [1,2,3,4,5]" class="star"
+            [class.active]="reviews[item.product.id] && reviews[item.product.id].rating >= s"
+            (click)="setRating(item.product.id, s)"><i class="fa-solid fa-star"></i></span>
+        </div>
+      </div>
+      <div class="comment-section">
+        <label>Your Comment</label>
+        <textarea [(ngModel)]="reviews[item.product.id].comment" placeholder="Share your experience..." rows="3"></textarea>
+      </div>
+    </div>
+    <button class="btn-submit" (click)="submitReviews()"><i class="fa-solid fa-paper-plane"></i> Submit All Reviews</button>
+  </div>
+</div>

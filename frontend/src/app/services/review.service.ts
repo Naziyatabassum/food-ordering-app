@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ReviewService {
-  private api = 'http://localhost:9090/api/reviews';
+  private api = 'https://food-ordering-app-5v8o.onrender.com/api/reviews';
   constructor(private http: HttpClient) {}
 
   addReview(review: any): Observable<any> { return this.http.post(this.api, review); }

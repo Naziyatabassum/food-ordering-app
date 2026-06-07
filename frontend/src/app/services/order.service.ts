@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-  private api = 'http://localhost:9090/api/orders';
+  private api = 'https://food-ordering-app-5v8o.onrender.com/api/orders';
   constructor(private http: HttpClient) {}
 
   placeOrder(userId: number, items: any[], deliveryAddress: string): Observable<any> {

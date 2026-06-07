@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private api = 'http://localhost:9090/api/products';
+  private api = 'https://food-ordering-app-5v8o.onrender.com/api/products';
   constructor(private http: HttpClient) {}
 
   getProducts(category?: string, sort: string = 'asc'): Observable<any[]> {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private api = 'http://localhost:9090/api/auth';
+  private api = 'https://food-ordering-app-5v8o.onrender.com/api/auth';
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
